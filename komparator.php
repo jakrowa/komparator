@@ -5,7 +5,7 @@
  
      require_once "connect.php";
      mysqli_report(MYSQLI_REPORT_STRICT);
- 
+ //testowy komentarz
      $baza=mysqli_connect($host, $db_user, $db_password, $db_name);
  
  if (mysqli_connect_errno())
