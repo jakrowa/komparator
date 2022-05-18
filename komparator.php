@@ -26,7 +26,7 @@
     $amd = $_POST['amd'];
     $intel = $_POST['intel'];
     $nvidia = $_POST['nvidia'];
-    $amdgrafika = $_POST[''];
+    $amdgrafika = $_POST['amdgrafika'];
  }
 
    
