@@ -19,43 +19,56 @@
 	$plyta = $_POST['plyta'];
 	$ram = $_POST['ram'];
 
+	function CzyCiagZnakowJestPrawidlowy($ciagznakow)
+	{
+
+		if ((strlen($ciagznakow)<3) || (strlen($ciagznakow)>30))
+		{
+			return false;		
+		}
+
+		return true;
+	}
+
+	
+
 //sprawdzanie istnienia amd
-if ((strlen($amd)<3) || (strlen($amd)>30))
+if(!CzyCiagZnakowJestPrawidlowy($amd))
 {
    $wszystko_OK=false;
    $_SESSION['e_amd']="Podaj nazwe procesora!";
 }
 
 //sprawdzanie istnienia intel
-if ((strlen($intel)<3) || (strlen($intel)>30))
+if(!CzyCiagZnakowJestPrawidlowy($intel))
 {
    $wszystko_OK=false;
    $_SESSION['e_intel']="Podaj nazwe procesora!";
 }
 
 //sprawdzanie istnienia nvidia
-if ((strlen($nvidia)<3) || (strlen($nvidia)>30))
+if(!CzyCiagZnakowJestPrawidlowy($nvidia))
 {
    $wszystko_OK=false;
    $_SESSION['e_nvidia']="Podaj nazwe karty graficzenej!";
 }
 
 //sprawdzanie istnienia amdgrafika
-if ((strlen($amdgrafika)<3) || (strlen($amdgrafika)>30))
+if(!CzyCiagZnakowJestPrawidlowy($amdgrafika))
 {
    $wszystko_OK=false;
    $_SESSION['e_amdgrafika']="Podaj nazwe karty graficznej!";
 }
 
 //sprawdzanie istnienia plyta
-if ((strlen($plyta)<3) || (strlen($plyta)>30))
+if(!CzyCiagZnakowJestPrawidlowy($plyta))
 {
    $wszystko_OK=false;
    $_SESSION['e_plyta']="Podaj nazwe płyty głównej!";
 }
 
 //sprawdzanie istnienia ram
-if ((strlen($ram)<3) || (strlen($ram)>30))
+if(!CzyCiagZnakowJestPrawidlowy($ram))
 {
    $wszystko_OK=false;
    $_SESSION['e_ram']="Podaj nazwe ramu!";
@@ -267,8 +280,7 @@ RAM
     <br><br><br><br><br>
 
 <center>
-AMD: <br> <input type="text" value="
-        <?php
+AMD: <br> <input type="text" value="<?php
 			if (isset($_SESSION['fr_amd']))
 			{
 
@@ -284,8 +296,7 @@ AMD: <br> <input type="text" value="
 		    	}
 		    ?>
 
-INTEL: <br> <input type="text"value="
-        <?php
+INTEL: <br> <input type="text"value="<?php
 			if (isset($_SESSION['fr_intel']))
 			{
 
@@ -293,7 +304,7 @@ INTEL: <br> <input type="text"value="
 			}
 		?>" name="intel" /> <br>
 
-		            <?php
+			<?php
 			    if (isset($_SESSION['e_intel']))
 			    {
 			    	echo '<div class="error" style="color:red">'.$_SESSION['e_intel'].'</div>';
@@ -301,8 +312,7 @@ INTEL: <br> <input type="text"value="
 		    	}
 		    ?>
 
-NVIDIA: <br> <input type="text"value="
-        <?php
+NVIDIA: <br> <input type="text"value="<?php
 			if (isset($_SESSION['fr_nvidia']))
 			{
 
@@ -318,8 +328,7 @@ NVIDIA: <br> <input type="text"value="
 		    	}
 		    ?>
 
-AMD GRAFIKA: <br> <input type="text"value="
-        <?php
+AMD GRAFIKA: <br> <input type="text"value="<?php
 			if (isset($_SESSION['fr_amdgrafika']))
 			{
 
@@ -335,8 +344,7 @@ AMD GRAFIKA: <br> <input type="text"value="
 		    	}
 		    ?>
 
-PŁYTA GŁOWNA: <br> <input type="text"value="
-        <?php
+PŁYTA GŁOWNA: <br> <input type="text"value="<?php
 			if (isset($_SESSION['fr_plyta']))
 			{
 
@@ -352,8 +360,7 @@ PŁYTA GŁOWNA: <br> <input type="text"value="
 		    	}
 		    ?>
 
-RAM: <br> <input type="text"value="
-        <?php
+RAM: <br> <input type="text"value="<?php
 			if (isset($_SESSION['fr_ram']))
 			{
 
