@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "7080:80"
+    networks:
+      - internal
+    volumes:
+      - .:/var/www/html/
+      - ./nginx/logs:/var/log/nginx/
+      - ./nginx:/etc/nginx/conf.d
+  php:
+    build: .
+    networks:
+      - internal
+    volumes:
+      - .:/var/www/html
+    environment:
+      DB_HOST: db
+  db:
+    build: ./mysql
+    networks:
+      - internal
+    ports:
+      - "7306:3306"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      MYSQL_DATABASE: komparator
+    volumes:
+      - ./mysql:/docker-entrypoint-initdb.d
+
+networks:
+  internal:
+    driver: bridge

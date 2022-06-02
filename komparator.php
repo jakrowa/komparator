@@ -168,7 +168,6 @@ if (isset($_POST['amd'])) {
 
     } catch (Exception $e) {
         echo '<span style="color:red;">Błąd serwera! </span>';
-
     }
 
 
